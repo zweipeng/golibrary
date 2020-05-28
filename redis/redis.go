@@ -1,7 +1,7 @@
 package redis
 
 import (
-	xtime "golibrary/time"
+	xtime "github.com/zweipeng/golibrary/time"
 	"github.com/gomodule/redigo/redis"
 	"time"
 )
