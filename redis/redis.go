@@ -1,7 +1,7 @@
 package redis
 
 import (
-	xtime "time"
+	xtime "golibrary/time"
 	"github.com/gomodule/redigo/redis"
 	"time"
 )
@@ -25,7 +25,7 @@ type Config struct {
 //creat a new pool
 func NewPool(c *Config) (p * Pool)  {
 	if c.DialTimeout <=0 || c.WriteTimeout <=0 || c.ReadTimeout <=0 {
-		return nil
+		panic("must config redis timeout")
 	}
 
 	dialFunc := func() (redis.Conn, error) {
