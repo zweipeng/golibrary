@@ -25,7 +25,7 @@ type Config struct {
 //creat a new pool
 func NewPool(c *Config) (p * Pool)  {
 	if c.DialTimeout <=0 || c.WriteTimeout <=0 || c.ReadTimeout <=0 {
-		panic("must config redis timeout")
+		return nil
 	}
 
 	dialFunc := func() (redis.Conn, error) {
