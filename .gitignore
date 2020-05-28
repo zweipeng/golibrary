@@ -1,0 +1,7 @@
+.idea/
+.git
+bin
+vendor
+go.mod
+go.sum
+*.iml
