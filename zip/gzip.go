@@ -5,6 +5,7 @@ import (
 	"compress/gzip"
 	"encoding/hex"
 	"github.com/sirupsen/logrus"
+	"io/ioutil"
 )
 
 /**
@@ -25,4 +26,19 @@ func Gzip(json string) string {
 
 	encoded := hex.EncodeToString(buf.Bytes())
 	return encoded
+}
+
+func GzipUnCompress(str string) ([]byte, error) {
+	i, err := hex.DecodeString(str)
+	if err == nil {
+		reader, err := gzip.NewReader(bytes.NewReader(i))
+		if err != nil {
+			var out []byte
+			return out, err
+		}
+		defer reader.Close()
+
+		return ioutil.ReadAll(reader)
+	}
+	return nil, nil
 }
