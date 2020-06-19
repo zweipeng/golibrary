@@ -12,7 +12,7 @@ import (
 func Base64URLDecode(data string) ([]byte, error) {
 	var missing = (4 - len(data)%4) % 4
 	data += strings.Repeat("=", missing)
-	return base64.URLEncoding.DecodeString(data)
+	return base64.StdEncoding.DecodeString(data)
 }
 
 func Base64UrlSafeEncode(source []byte) string {
